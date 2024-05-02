@@ -1,0 +1,75 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int STACK[5] = { 0, }; //스택 선언
+int stack = -1; //stack==top
+
+
+int push(int e) //자료 삽입
+{
+	if (stack == 4) { //스택 상태 확인
+		printf("스택이 가득 찼습니다.\n");
+	}
+	else {
+		STACK[++stack] = e;
+	}
+	return 0;
+}
+int pop() //자료 추출
+{
+	if (stack == -1) { //스택 상태 확인
+		printf("스텍이 비어 있습니다,\n");
+	}
+	else {
+		printf("%c\n", STACK[stack]);
+		stack--;
+	}
+	return 0;
+}
+
+int print() // 스택 전체 출력
+{
+	printf("stack: ");
+	for (int i = 0; i <= stack; i++) //스택 출력을 위한 반복문
+		printf("%c, ", STACK[i]);
+	printf("\nsize: %d\n\n", stack);
+	return 0;
+}
+
+
+int main()
+{
+	while (1) 
+	{
+		printf("메뉴를 선택하시오\n");
+		printf("1.자료 삽입 2.자료 반환 3.프로그램 종료 \n");
+		int n = 0;
+		char e = 0;
+		scanf("%d", &n);
+
+		switch (n)
+		{
+			case 1://자료 삽입
+			{
+				printf("삽입할 자료를 입력하시오: ");
+				scanf(" %c", &e);
+				push(e);
+				print();
+				break;
+			}
+			case 2://자료 반환
+			{
+				pop();
+				print();
+				break;
+			}
+			case 3:
+				return 0;
+			default:
+			{
+				printf("메뉴안에서 다시 선택하십시오\n");
+				break;
+			}
+		}
+	}
+}
