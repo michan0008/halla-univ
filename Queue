@@ -1,0 +1,57 @@
+//큐
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int que[5] = { 0, };
+int front = -1, rear = -1;
+
+int Add()
+{
+	int num;
+	printf("삽입할 자료를 입력하시오: ");
+	scanf("%d", &num);
+	que[++front] = num;
+	
+	return 0;
+}
+
+int Return()
+{
+	printf("%d\n", que[++rear]);
+	//++rear;
+
+	return 0;
+}
+
+int main()
+{
+	int n;
+
+	while (1) {
+
+		if (front == 5)
+			front = 1;
+		if (rear == 5)
+			rear = 1;
+
+		printf("메뉴를 선택하시오\n");
+		printf("1. 자료 삽입\n");
+		printf("2. 자료 반환\n");
+		printf("3. 종료\n\n");
+
+		scanf("%d", &n);
+
+		switch (n)
+		{
+		case 1:
+			Add();
+			break;
+		case 2:
+			Return();
+			break;
+		case 3:
+			return 0;
+		}
+	}
+}
